@@ -61,6 +61,28 @@ username=$OLD_USERNAME
 password=$OLD_PASSWORD
 domain=$OLD_DOMAIN
 EOF
+
+cat <<EOF > /etc/samba/smb.conf
+[global]
+map to guest = Bad User
+log file = /var/log/samba/%m
+log level = 1
+hosts allow = 192.168.0.0/16
+hosts deny = 0.0.0.0/0
+passdb backend = smbpasswd
+[remotedir]
+path = /mnt/remotedir
+read only = no
+guest ok = no
+guest only = no
+public = no
+valid users = $NEW_USERNAME
+browsable = yes
+writeable = yes
+create mask = 777
+directory mask = 777
+EOF
+
 mount -t cifs //"$OLD_HOST"/"$OLD_DIRECTORY" /mnt/remotedir -o uid=0,credentials=/etc/win-credentials,x-systemd.automount,file_mode=0777,dir_mode=0666,iocharset=utf8,vers=1.0,noperm || exit 1
 
 add_user "$NEW_USERNAME" "$NEW_PASSWORD" || exit 1
