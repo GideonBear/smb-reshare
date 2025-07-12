@@ -4,10 +4,17 @@ services:
     container_name: smb-reshare
     environment:
       - OLD_DOMAIN=NAS
+      - OLD_HOST=192.168.1.100
       - OLD_USERNAME=username
       - OLD_PASSWORD=password
-#      - NEW_USERNAME=username
-#      - NEW_PASSWORD=password
+      - OLD_DIRECTORY=directory
+      - NEW_USERNAME=username
+      - NEW_PASSWORD=password
     ports:
       - "445:445"
+    cap_add:
+      - SYS_ADMIN
+      - DAC_READ_SEARCH
+    security_opt:
+      - apparmor:unconfined
     restart: unless-stopped
