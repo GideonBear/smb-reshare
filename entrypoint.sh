@@ -56,6 +56,21 @@ add_user() {
     return 0
 }
 
+for var in OLD_USERNAME OLD_PASSWORD NEW_USERNAME NEW_PASSWORD; do
+  val="${!var}"
+  file_var="${var}_FILE"
+  file_val="${!file_var}"
+
+  if [ -z "$val" ]; then
+    if [ -f "$file_val" ]; then
+      export "$var"="$(cat "$file_val")"
+    else
+      echo "Error: $var and ${file_var} are unset or invalid." >&2
+      exit 1
+    fi
+  fi
+done
+
 cat <<EOF > /etc/win-credentials
 username=$OLD_USERNAME
 password=$OLD_PASSWORD

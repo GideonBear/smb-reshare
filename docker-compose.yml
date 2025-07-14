@@ -5,11 +5,11 @@ services:
     environment:
       - OLD_DOMAIN=NAS
       - OLD_HOST=192.168.1.100
-      - OLD_USERNAME=username
-      - OLD_PASSWORD=password
       - OLD_DIRECTORY=directory
-      - NEW_USERNAME=username
-      - "NEW_PASSWORD=password"
+      - OLD_USERNAME_FILE=/run/secrets/old_username  # Or OLD_USERNAME
+      - OLD_PASSWORD_FILE=/run/secrets/old_password  # Or OLD_PASSWORD
+      - NEW_USERNAME_FILE=/run/secrets/new_username  # Or NEW_USERNAME
+      - NEW_PASSWORD_FILE=/run/secrets/new_password  # Or NEW_PASSWORD
     ports:
       - "445:445"
     cap_add:
@@ -18,3 +18,12 @@ services:
     security_opt:
       - apparmor:unconfined
     restart: unless-stopped
+secrets:
+  old_username:
+    file: ./old_username.txt
+  old_password:
+    file: ./old_password.txt
+  new_username:
+    file: ./new_username.txt
+  new_password:
+    file: ./new_password.txt
