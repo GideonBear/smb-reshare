@@ -1,6 +1,6 @@
 services:
   smb-reshare:
-    image: ghcr.io/gideonbear/smb-reshare@sha256:ea88c9ea6d20d17219b8632626c6e80b2e9d83662d93b2906e2a064c07e625be
+    image: ghcr.io/gideonbear/smb-reshare@sha256:5a86db46cd60380f881797af004720cf1e26b73cb0b825b83344d09e50f622c1
     container_name: smb-reshare
     environment:
       OLD_DOMAIN: NAS
