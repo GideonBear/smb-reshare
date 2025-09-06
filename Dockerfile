@@ -1,4 +1,4 @@
-FROM debian:trixie@sha256:6d87375016340817ac2391e670971725a9981cfc24e221c47734681ed0f6c0f5
+FROM debian:13.0@sha256:6d87375016340817ac2391e670971725a9981cfc24e221c47734681ed0f6c0f5
 
 RUN apt-get update \
     && apt-get install -y samba cifs-utils \
