@@ -1,18 +1,26 @@
+name: smb-reshare
+
 services:
   smb-reshare:
-    image: ghcr.io/gideonbear/smb-reshare@sha256:5a86db46cd60380f881797af004720cf1e26b73cb0b825b83344d09e50f622c1
+    image: ghcr.io/gideonbear/smb-reshare:v0.1.6@sha256:5a86db46cd60380f881797af004720cf1e26b73cb0b825b83344d09e50f622c1
     container_name: smb-reshare
+    secrets:
+      - old_username
+      - old_password
+      - new_username
+      - new_password
     environment:
       OLD_DOMAIN: NAS
       OLD_HOST: 192.168.1.100
       OLD_DIRECTORY: directory
-      OLD_USERNAME_FILE: /run/secrets/old_username  # Or OLD_USERNAME
-      OLD_PASSWORD_FILE: /run/secrets/old_password  # Or OLD_PASSWORD
-      NEW_USERNAME_FILE: /run/secrets/new_username  # Or NEW_USERNAME
-      NEW_PASSWORD_FILE: /run/secrets/new_password  # Or NEW_PASSWORD
+      OLD_USERNAME_FILE: /run/secrets/old_username # Or OLD_USERNAME
+      OLD_PASSWORD_FILE: /run/secrets/old_password # Or OLD_PASSWORD
+      NEW_USERNAME_FILE: /run/secrets/new_username # Or NEW_USERNAME
+      NEW_PASSWORD_FILE: /run/secrets/new_password # Or NEW_PASSWORD
     ports:
       # SMB port. 139 is legacy (NetBIOS) and not needed.
-      - "445:445"
+      - '0.0.0.0:445:445'
+    restart: unless-stopped
     cap_add:
       # For mounting
       - SYS_ADMIN
@@ -21,12 +29,6 @@ services:
     security_opt:
       # Also for mounting?
       - apparmor:unconfined
-    restart: unless-stopped
-    secrets:
-      - old_username
-      - old_password
-      - new_username
-      - new_password
 
 secrets:
   old_username:

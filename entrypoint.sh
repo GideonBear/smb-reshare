@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -euo pipefail
+
 # The add_user function was mostly copied from https://github.com/dockur/samba
 # (file: https://github.com/dockur/samba/blob/master/samba.sh). License below:
 
@@ -35,49 +37,58 @@ add_user() {
 
     # Check if the user already exists, if not, create it
     if ! id "$username" &>/dev/null; then
-        [[ "$username" != "$USER" ]] && echo "User $username does not exist, creating user..."
-        adduser --shell /sbin/nologin "$username" || { echo "Failed to create user $username"; return 1; }
+        [[ $username != "$USER" ]] && echo "User $username does not exist, creating user..."
+        adduser --shell /sbin/nologin "$username" || {
+            echo "Failed to create user $username"
+            return 1
+        }
     fi
 
     # Check if the user is a samba user
-    pdb_output=$(pdbedit -s "$cfg" -L)  #Do not combine the two commands into one, as this could lead to issues with the execution order and proper passing of variables.
+    pdb_output=$(pdbedit -s "$cfg" -L) #Do not combine the two commands into one, as this could lead to issues with the execution order and proper passing of variables.
     if echo "$pdb_output" | grep -q "^$username:"; then
         # skip samba password update if password is * or !
-        if [[ "$password" != "*" && "$password" != "!" ]]; then
+        if [[ $password != "*" && $password != "!" ]]; then
             # If the user is a samba user, update its password in case it changed
-            echo -e "$password\n$password" | smbpasswd -c "$cfg" -s "$username" > /dev/null || { echo "Failed to update Samba password for $username"; return 1; }
+            echo -e "$password\n$password" | smbpasswd -c "$cfg" -s "$username" >/dev/null || {
+                echo "Failed to update Samba password for $username"
+                return 1
+            }
         fi
     else
         # If the user is not a samba user, create it and set a password
-        echo -e "$password\n$password" | smbpasswd -a -c "$cfg" -s "$username" > /dev/null || { echo "Failed to add Samba user $username"; return 1; }
-        [[ "$username" != "$USER" ]] && echo "User $username has been added to Samba and password set."
+        echo -e "$password\n$password" | smbpasswd -a -c "$cfg" -s "$username" >/dev/null || {
+            echo "Failed to add Samba user $username"
+            return 1
+        }
+        [[ $username != "$USER" ]] && echo "User $username has been added to Samba and password set."
     fi
 
     return 0
 }
 
 for var in OLD_USERNAME OLD_PASSWORD NEW_USERNAME NEW_PASSWORD; do
-  val="${!var}"
-  file_var="${var}_FILE"
-  file_val="${!file_var}"
+    val="${!var}"
+    file_var="${var}_FILE"
+    file_val="${!file_var}"
 
-  if [ -z "$val" ]; then
-    if [ -f "$file_val" ]; then
-      export "$var"="$(cat "$file_val")"
-    else
-      echo "Error: $var and ${file_var} are unset or invalid." >&2
-      exit 1
+    if [ -z "$val" ]; then
+        if [ -f "$file_val" ]; then
+            export "$var"="$(cat "$file_val")"
+        else
+            echo "Error: $var and ${file_var} are unset or invalid." >&2
+            exit 1
+        fi
     fi
-  fi
 done
 
-cat <<EOF > /etc/win-credentials
+cat <<EOF >/etc/win-credentials
 username=$OLD_USERNAME
 password=$OLD_PASSWORD
 domain=$OLD_DOMAIN
 EOF
 
-cat <<EOF > /etc/samba/smb.conf
+cat <<EOF >/etc/samba/smb.conf
 [global]
 map to guest = Bad User
 log file = /var/log/samba/%m
