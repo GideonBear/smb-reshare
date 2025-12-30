@@ -1,9 +1,9 @@
 FROM debian:13.2@sha256:c71b05eac0b20adb4cdcc9f7b052227efd7da381ad10bb92f972e8eae7c6cdc9
 
 # renovate: suite=trixie depName=samba
-ENV SAMBA_VERSION=2:4.22.3+dfsg-4
+ENV SAMBA_VERSION="2:4.22.3+dfsg-4"
 # renovate: suite=trixie depName=cifs-utils
-ENV CIFSUTILS_VERSION=7.4-1
+ENV CIFSUTILS_VERSION="7.4-1"
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
