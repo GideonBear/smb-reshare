@@ -69,9 +69,9 @@ add_user() {
 }
 
 for var in OLD_USERNAME OLD_PASSWORD NEW_USERNAME NEW_PASSWORD; do
-    val="${!var}"
+    val="${!var-}"
     file_var="${var}_FILE"
-    file_val="${!file_var}"
+    file_val="${!file_var-}"
 
     if [ -z "$val" ]; then
         if [ -f "$file_val" ]; then
