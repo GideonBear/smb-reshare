@@ -1,7 +1,6 @@
 #!/bin/bash
 
 set -euo pipefail
-set -x
 
 # The add_user function was mostly copied from https://github.com/dockur/samba
 # (file: https://github.com/dockur/samba/blob/master/samba.sh). License below:
