@@ -9,6 +9,7 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends \
         samba=${SAMBA_VERSION} \
         cifs-utils=${CIFSUTILS_VERSION} \
+        adduser \
     && rm -rf /var/lib/apt/lists/* /usr/share/doc /usr/share/man \
     && apt-get clean \
     && mkdir /mnt/remotedir \
