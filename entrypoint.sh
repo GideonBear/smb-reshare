@@ -38,7 +38,7 @@ add_user() {
 
     # Check if the user already exists, if not, create it
     if ! id "$username" &>/dev/null; then
-        [[ $username != "$USER" ]] && echo "User $username does not exist, creating user..."
+        [[ $username != "${USER-}" ]] && echo "User $username does not exist, creating user..."
         adduser --shell /sbin/nologin "$username" || {
             echo "Failed to create user $username"
             return 1
@@ -62,7 +62,7 @@ add_user() {
             echo "Failed to add Samba user $username"
             return 1
         }
-        [[ $username != "$USER" ]] && echo "User $username has been added to Samba and password set."
+        [[ $username != "${USER-}" ]] && echo "User $username has been added to Samba and password set."
     fi
 
     return 0
