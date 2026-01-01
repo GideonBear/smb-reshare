@@ -38,7 +38,7 @@ repos:
       - id: trailing-whitespace
 
   - repo: https://github.com/GideonBear/pre-commit-hooks
-    rev: v1.9.2
+    rev: v1.10.2
     hooks:
       # General
       - id: gha-pin
@@ -48,6 +48,7 @@ repos:
       - id: set-euo-pipefail
       # Docker
       - id: docker-image-pin
+      - id: docker-apt-renovate
 
   # General
 
