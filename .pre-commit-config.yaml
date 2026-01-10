@@ -1,4 +1,4 @@
-minimum_pre_commit_version: '4.2.0'
+minimum_pre_commit_version: 4.2.0
 
 ci:
   autoupdate_commit_msg: "chore(pre-commit): autoupdate"
@@ -11,7 +11,7 @@ repos:
     hooks:
       # General
       - id: check-added-large-files
-        args: [ "--enforce-all" ]
+        args: [--enforce-all]
       - id: check-case-conflict
       - id: check-executables-have-shebangs
       - id: check-illegal-windows-names
@@ -29,7 +29,7 @@ repos:
       - id: fix-byte-order-marker
       - id: forbid-submodules
       - id: mixed-line-ending
-        args: [ "--fix=lf" ]
+        args: [--fix=lf]
       - id: pretty-format-json
         args:
           - --autofix
@@ -56,7 +56,7 @@ repos:
     rev: v2.4.1
     hooks:
       - id: codespell
-        args: [ "--write-changes" ]
+        args: [--write-changes]
 
   - repo: https://github.com/gitleaks/gitleaks
     rev: v8.30.0
@@ -69,8 +69,8 @@ repos:
     hooks:
       - id: pretty-format-json5
         args:
-          - "--indent=4"
-          - "--no-sort-keys"
+          - --indent=4
+          - --no-sort-keys
 
   - repo: https://github.com/executablebooks/mdformat
     rev: 1.0.0
@@ -92,8 +92,8 @@ repos:
     rev: v1.19.0
     hooks:
       - id: zizmor
-        args: [ "--persona=auditor" ]
-        exclude: "^.github/workflows/release.yml$"
+        args: [--persona=auditor]
+        exclude: ^.github/workflows/release.yml$
 
   # Shell
 
@@ -106,7 +106,7 @@ repos:
     rev: v3.12.0-2
     hooks:
       - id: shfmt
-        args: [ "--write", "--simplify", "--indent=4" ]
+        args: [--write, --simplify, --indent=4]
 
   # Docker
 
@@ -114,7 +114,7 @@ repos:
     rev: v3.1.0
     hooks:
       - id: dclint
-        args: [ "--fix", "--max-warnings=0" ]
+        args: [--fix, --max-warnings=0]
 
   - repo: https://github.com/reteps/dockerfmt
     rev: v0.3.9
@@ -125,4 +125,4 @@ repos:
     rev: v2.14.0
     hooks:
       - id: hadolint
-        args: ["--failure-threshold=style"]
+        args: [--failure-threshold=style]
