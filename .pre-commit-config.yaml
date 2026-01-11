@@ -38,8 +38,9 @@ repos:
     rev: v1.11.1
     hooks:
       # General
-      - id: gha-pin
       - id: pre-commit-ci-skip
+      # Gha
+      - id: gha-pin
       # Shell
       - id: shfuncdecfmt
       - id: set-euo-pipefail
