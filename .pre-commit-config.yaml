@@ -35,7 +35,7 @@ repos:
       - id: trailing-whitespace
 
   - repo: https://github.com/GideonBear/pre-commit-hooks
-    rev: v1.11.1
+    rev: v1.12.0
     hooks:
       # General
       - id: pre-commit-ci-skip
@@ -85,7 +85,7 @@ repos:
       - id: actionlint
 
   - repo: https://github.com/zizmorcore/zizmor-pre-commit
-    rev: v1.19.0
+    rev: v1.20.0
     hooks:
       - id: zizmor
         args: [--persona=auditor]
