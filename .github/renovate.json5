@@ -4,9 +4,7 @@
         "config:best-practices",
         ":semanticCommits",
         ":semanticCommitTypeAll(chore)",
+        ":maintainLockFilesWeekly",
         "github>GideonBear/pre-commit-hooks//renovate/all.json5",
     ],
-    lockFileMaintenance: {
-        enabled: true,
-    },
 }
