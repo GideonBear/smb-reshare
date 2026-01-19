@@ -47,6 +47,8 @@ repos:
       # Docker
       - id: docker-image-pin
       - id: docker-apt-renovate
+      # General - post
+      - id: pre-commit-config-fmt
 
   # General
 
