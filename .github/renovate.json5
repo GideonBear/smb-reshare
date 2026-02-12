@@ -4,7 +4,6 @@
         "config:best-practices",
         ":semanticCommits",
         ":semanticCommitTypeAll(chore)",
-        ":maintainLockFilesWeekly",
         ":disableRateLimiting",
         "github>GideonBear/pre-commit-hooks//renovate/all.json5",
     ],
