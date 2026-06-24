@@ -1,4 +1,4 @@
-FROM debian:13.5@sha256:1de1fcf32a035452eb3a2c99926a9988509f177b3c99efab609700297d2076bf
+FROM debian:13.5@sha256:d07d1b51c39f51188e60be9b64e6bf769fa94e187f092bc32b91305cfa34ba5a
 
 # renovate: suite=trixie depName=samba
 ENV SAMBA_VERSION="2:4.22.8+dfsg-0+deb13u1"
