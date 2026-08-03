@@ -87,7 +87,7 @@ repos:
       - id: actionlint
 
   - repo: https://github.com/zizmorcore/zizmor-pre-commit
-    rev: v1.28.0
+    rev: v1.29.0
     hooks:
       - id: zizmor
         args: [--no-progress, --persona=auditor]
@@ -124,7 +124,7 @@ repos:
       - id: dockerfmt
 
   - repo: https://github.com/AleksaC/hadolint-py
-    rev: v2.14.0
+    rev: v2.15.1
     hooks:
       - id: hadolint
         args: [--failure-threshold=style]
