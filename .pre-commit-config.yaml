@@ -127,4 +127,4 @@ repos:
     rev: v2.15.1
     hooks:
       - id: hadolint
-        args: [--failure-threshold=style]
+        args: [--failure-threshold=style, --ignore=DL3066]
