@@ -7,4 +7,5 @@
         ":disableRateLimiting",
         "github>GideonBear/pre-commit-hooks//renovate/all.json5",
     ],
+    maxMajorIncrement: 0,
 }
