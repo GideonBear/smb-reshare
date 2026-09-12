@@ -1,7 +1,7 @@
 FROM debian:13.6@sha256:f324c7ff54321e8d9c588493a20244965938ce0aa50bbd1022d38010e9ffc4b1
 
 # renovate: suite=trixie depName=samba
-ENV SAMBA_VERSION="2:4.22.10+dfsg-0+deb13u1"
+ENV SAMBA_VERSION="2:4.22.11+dfsg-0+deb13u1"
 # renovate: suite=trixie depName=cifs-utils
 ENV CIFSUTILS_VERSION="2:7.4-1"
 # renovate: suite=trixie depName=adduser
