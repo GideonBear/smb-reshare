@@ -2,7 +2,7 @@ name: smb-reshare
 
 services:
   smb-reshare:
-    image: ghcr.io/gideonbear/smb-reshare:v0.1.12@sha256:0cc9dbc0ccd7e43a9b6002f558b8a7ab695a8e716312b7bc22159342985a3f16
+    image: ghcr.io/gideonbear/smb-reshare:v0.1.13@sha256:652953db60b3cb6ae3e007dc4e7f8d809d162a7403107fe3dd4fed1b0edf30ab
     container_name: smb-reshare
     secrets:
       - old_username
