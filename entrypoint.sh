@@ -93,7 +93,8 @@ cat <<EOF >/etc/samba/smb.conf
 map to guest = Bad User
 log file = /var/log/samba/%m
 log level = 1
-hosts allow = 192.168.0.0/16
+# Localhost allowed for healthcheck
+hosts allow = 127.0.0.1 192.168.0.0/16
 hosts deny = 0.0.0.0/0
 passdb backend = smbpasswd
 [remotedir]
