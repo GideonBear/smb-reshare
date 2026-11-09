@@ -87,7 +87,7 @@ repos:
       - id: actionlint
 
   - repo: https://github.com/zizmorcore/zizmor-pre-commit
-    rev: v1.31.1
+    rev: v1.32.0
     hooks:
       - id: zizmor
         args: [--no-progress, --persona=auditor]
@@ -119,7 +119,7 @@ repos:
         args: [--fix, --max-warnings=0]
 
   - repo: https://github.com/reteps/dockerfmt
-    rev: v0.5.4
+    rev: v0.6.0
     hooks:
       - id: dockerfmt
 
