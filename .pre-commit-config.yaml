@@ -119,7 +119,7 @@ repos:
         args: [--fix, --max-warnings=0]
 
   - repo: https://github.com/reteps/dockerfmt
-    rev: v0.6.0
+    rev: v1.0.0
     hooks:
       - id: dockerfmt
 
