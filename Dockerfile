@@ -5,7 +5,7 @@ ENV SAMBA_VERSION="2:4.22.11+dfsg-0+deb13u1"
 # renovate: suite=trixie depName=smbclient
 ENV SMBCLIENT_VERSION="2:4.22.11+dfsg-0+deb13u1"
 # renovate: suite=trixie depName=cifs-utils
-ENV CIFSUTILS_VERSION="2:7.4-1"
+ENV CIFSUTILS_VERSION="2:7.4-1+deb13u2"
 # renovate: suite=trixie depName=adduser
 ENV ADDUSER_VERSION="3.152"
 
